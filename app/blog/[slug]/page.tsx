@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation'
 import { CustomMDX } from 'app/components/mdx'
 import { formatDate, getBlogPosts } from 'app/blog/utils'
 import { baseUrl } from 'app/sitemap'
+import AuthorProfile from 'app/components/AuthorProfile'
 
 export async function generateStaticParams() {
   let posts = getBlogPosts()
@@ -95,6 +96,13 @@ export default async function Blog({ params }) {
       <article className="prose">
         <CustomMDX source={post.content} />
       </article>
+      <AuthorProfile
+        author={{
+          name: 'HuttTheJAVA',
+          bio: '개발을 사랑하는 블로거입니다.',
+          avatarUrl: 'https://github.com/HuttTheJAVA.png',
+        }}
+      />
     </section>
   )
 }
